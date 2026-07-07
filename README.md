@@ -24,3 +24,5 @@
     </td>
   </tr>
 </table>
+
+[![Spotify](https://github-readme-spotify.loaders.gl/api/spotify?user=31ggutkgekx6i4d7m4fwx7qvgodi)](https://open.spotify.com/user/11132457890?si=abcde)
