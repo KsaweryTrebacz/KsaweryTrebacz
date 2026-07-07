@@ -6,5 +6,5 @@
 ![Moje Statystyki Metrics](https://github.com/KsaweryTrebacz/KsaweryTrebacz/blob/main/github-metrics.svg)
 
 ## 🎵 Czego aktualnie słucham
-[![Spotify](https://novatorem-spotify-widget.vercel.app/api/static?username=sqed&theme=dark)](https://open.spotify.com/user/sqed)
+[![Spotify](https://spotify-recent-detector.vercel.app/api/run?user=sqed)](https://open.spotify.com/user/sqed)
 
