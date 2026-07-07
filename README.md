@@ -3,7 +3,7 @@
 2004
 
 ## Moje Statystyki
-![Moje Statystyki Metrics](https://github.com/TWÓJ_NICK/TWÓJ_NICK/blob/main/github-metrics.svg?v=2)
+![Moje Statystyki Metrics](https://github.com/KsaweryTrebacz/blob/main/github-metrics.svg?v=2)
 
 ## 🎵 Czego aktualnie słucham
 [![Spotify](https://spotify-recent-detector.vercel.app/api/run?user=sqed)](https://open.spotify.com/user/sqed)
