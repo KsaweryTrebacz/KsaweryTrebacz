@@ -16,7 +16,7 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
 
           # Podstawowe ustawienia
-          user: TWOJ_NICK # <--- Upewnij się, że tu jest Twój nick
+          user: KsaweryTrebacz # <--- Upewnij się, że tu jest Twój nick
           template: classic
           base: header, activity, community, repositories, metadata
           config_timezone: Europe/Warsaw
