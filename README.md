@@ -6,8 +6,6 @@
 ![Moje Statystyki Metrics](github-metrics.svg)
 
 ## Czego aktualnie słucham
-[![Spotify](https://img.shields.io/badge/Spotify-Słucham%20teraz-1ED760?style=for-the-badge&logo=spotify&logoColor=white)](https://open.spotify.com/user/31ggutkgekx6i4d7m4fwx7qvgodi)
-
 
 <br />
 
@@ -24,8 +22,3 @@
     </td>
   </tr>
 </table>
-
-[![Spotify](https://github-readme-spotify.loaders.gl/api/spotify?user=31ggutkgekx6i4d7m4fwx7qvgodi)](https://open.spotify.com/user/11132457890?si=abcde)
-
-## 🎵 Czego aktualnie słucham
-[![Spotify](https://spotify-github-profile.azurewebsites.net/api/view?uid=31ggutkgekx6i4d7m4fwx7qvgodi&cover_image=true&theme=dark)](https://open.spotify.com/user/11132457890?si=abcde)
