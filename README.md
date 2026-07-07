@@ -1,6 +1,4 @@
-# Cześć, tu Ksawery Trębacz! 👋
-
-2004
+# Cześć, tu Ksawery!
 
 ## Moje Statystyki
 ![Moje Statystyki Metrics](github-metrics.svg)
