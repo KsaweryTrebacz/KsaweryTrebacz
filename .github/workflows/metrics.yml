@@ -1,10 +1,7 @@
 name: Metrics
 on:
-  # Aktualizacja automatyczna co 12 godzin
-  schedule: [{cron: "0 */12 * * *"}]
-  # Pozwala też uruchomić generowanie ręcznie w zakładce Actions
+  schedule: [{cron: "0 */12 * * "}]
   workflow_dispatch:
-  # Aktualizacja przy każdym pushu do gałęzi main
   push: {branches: ["master", "main"]}
 
 jobs:
@@ -13,36 +10,35 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Generowanie podstawowych statystyk i języków
+      - name: Generowanie statystyk
         uses: lowlighter/metrics@latest
         with:
-          # Tutaj podajemy sekret, który stworzyliśmy w Kroku 2
           token: ${{ secrets.METRICS_TOKEN }}
 
-          # Podstawowe ustawienia wyglądu
-          user: KsaweryTrebacz # <--- WPISZ TU SWÓJ NICK
+          # Podstawowe ustawienia
+          user: TWOJ_NICK # <--- Upewnij się, że tu jest Twój nick
           template: classic
           base: header, activity, community, repositories, metadata
-          config_timezone: Europe/Warsaw # Twoja strefa czasowa
+          config_timezone: Europe/Warsaw
           
-          # Wtyczka: Najczęściej używane języki (wykres)
+          # Ustawienie kolejności (tylko to, co jest faktycznie włączone)
+          config_order: base.header, languages, habits, isocalendar
+
+          # Wtyczka: Języki
           plugin_languages: yes
-          plugin_languages_ignored: html, css # ignoruj proste języki
+          plugin_languages_ignored: html, css
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 8
           
-          # Wtyczka: Linie kodu (ile dodałeś/usunąłeś)
+          # Wtyczka: Linie kodu
           plugin_lines: yes
 
-          # Wtyczka: czas
+          # Wtyczka: Nawyki kodowania (naprawiony błąd)
           plugin_habits: yes
           plugin_habits_facts: yes
           plugin_habits_charts: yes
-          plugin_habits_days: 14 # Analiza z ostatnich 14 dni
+          plugin_habits_days: 14
 
-          # Wtyczka: wykresy
+          # Wtyczka: Kalendarz 3D
           plugin_isocalendar: yes
-          plugin_isocalendar_duration: half-year # Pokazuj ostatnie pół roku (lub 'full-year')
-
-          # Wtyczka: wyglad
-          config_order: base.header, languages, habits, achievements, music
+          plugin_isocalendar_duration: half-year
