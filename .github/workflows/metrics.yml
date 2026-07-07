@@ -16,13 +16,13 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
 
           # Podstawowe ustawienia
-          user: KsaweryTrebacz # <--- Upewnij się, że tu jest Twój nick
+          user: KsaweryTrebacz
           template: classic
           base: header, activity, community, repositories, metadata
           config_timezone: Europe/Warsaw
           
-          # TUTAJ: Dodałem 'music' na sam koniec listy wyświetlania
-          config_order: base.header, languages, habits, isocalendar, music
+          # Kolejność bez modułu music
+          config_order: base.header, languages, habits, isocalendar
 
           # Wtyczka: Języki
           plugin_languages: yes
@@ -42,10 +42,3 @@ jobs:
           # Wtyczka: Kalendarz 3D
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year
-
-          # TUTAJ: Włączona sekcja Spotify (pobiera dane z Twojego Secretu)
-          plugin_music: yes
-          plugin_music_provider: spotify
-          plugin_music_mode: latest                  # Pokazuje aktualnie lub ostatnio grany utwór
-          plugin_music_played_at: yes                 # Pokazuje czas, kiedy leciał kawałek
-          plugin_music_token: "${{ secrets.SPOTIFY_TOKENS }}"
