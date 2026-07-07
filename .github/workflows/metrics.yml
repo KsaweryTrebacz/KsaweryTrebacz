@@ -34,8 +34,12 @@ jobs:
           # Wtyczka: Linie kodu (ile dodałeś/usunąłeś)
           plugin_lines: yes
 
-          #Wtyczka: czas
+          # Wtyczka: czas
           plugin_habits: yes
           plugin_habits_facts: yes
           plugin_habits_charts: yes
           plugin_habits_days: 14 # Analiza z ostatnich 14 dni
+
+          # Wtyczka: wykresy
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year # Pokazuj ostatnie pół roku (lub 'full-year')
