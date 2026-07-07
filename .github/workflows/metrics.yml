@@ -43,3 +43,6 @@ jobs:
           # Wtyczka: wykresy
           plugin_isocalendar: yes
           plugin_isocalendar_duration: half-year # Pokazuj ostatnie pół roku (lub 'full-year')
+
+          # Wtyczka: wyglad
+          config_order: base.header, languages, habits, achievements, music
