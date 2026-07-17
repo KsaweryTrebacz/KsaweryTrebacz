@@ -4,7 +4,7 @@
 
 # Cześć, tu Ksawery!
 
-## 📊 Moje Statystyki
+## Moje Statystyki
 
 <p align="center">
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=KsaweryTrebacz&show_icons=true&count_private=true&hide_border=true&bg_color=135,110B1C,1E1235,110B1C&title_color=22D3EE&icon_color=7C3AED&text_color=94A3B8" />
@@ -12,10 +12,10 @@
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=KsaweryTrebacz&hide_border=true&background=110B1C&stroke=2A1E45&ring=22D3EE&fire=10B981&currStreakLabel=22D3EE&titleColor=7C3AED&sideLabels=F8FAFC&dates=94A3B8&currStreakNum=F8FAFC&sideNums=F8FAFC" />
+  <img src="https://streak-stats.demolab.com/?user=KsaweryTrebacz&hide_border=true&background=110B1C&stroke=2A1E45&ring=22D3EE&fire=10B981&currStreakLabel=22D3EE&titleColor=7C3AED&sideLabels=F8FAFC&dates=94A3B8&currStreakNum=F8FAFC&sideNums=F8FAFC" />
 </p>
 
-## 🐍 Aktywność
+## Aktywność
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/KsaweryTrebacz/KsaweryTrebacz/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />
