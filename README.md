@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="header.svg" alt="Ksawery Trębacz — banner" width="100%" />
+</p>
+
 # Cześć, tu Ksawery!
 
 ## Moje Statystyki
