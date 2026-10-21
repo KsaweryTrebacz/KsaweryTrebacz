@@ -1,9 +1,10 @@
-"""Generuje assets/aktywnosc.svg: tygodniowy wykres kontrybucji z ostatniego roku.
+"""Generuje wykres kontrybucji z ostatniego roku (SVG) w palecie profilu.
 
 Dane pochodzą z publicznego kalendarza kontrybucji na GitHubie, więc skrypt nie potrzebuje
-tokenu ani zewnętrznych bibliotek. Kolory trzymają się palety profilu: czerń, biel, szarość, fiolet.
+tokenu ani zewnętrznych bibliotek. Kolory są jednolite: czerń, biel, szarość i fiolet.
 
-Uruchomienie lokalne:  python .github/scripts/activity_chart.py [nazwa_uzytkownika]
+Uruchomienie:  python .github/scripts/activity_chart.py [użytkownik] [plik_wyjściowy]
+Domyślny plik wyjściowy to out/aktywnosc.svg w katalogu repozytorium.
 """
 from __future__ import annotations
 
@@ -16,8 +17,8 @@ import urllib.request
 from collections import defaultdict
 from pathlib import Path
 
-USER = sys.argv[1] if len(sys.argv) > 1 else "KsaweryTrebacz"
-OUT = Path(__file__).resolve().parents[2] / "assets" / "aktywnosc.svg"
+ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_OUT = ROOT / "out" / "aktywnosc.svg"
 
 BG = "#15151D"
 GRID = "#24242F"
@@ -113,17 +114,8 @@ def render(counts: dict[dt.date, int], header_total: int | None) -> str:
         f'<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" '
         f'role="img" aria-label="Aktywność na GitHubie w ostatnim roku: {total} kontrybucji">'
     )
-    add("<defs>")
-    add(f'<linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="{VIOLET_LIGHT}" />'
-        f'<stop offset="100%" stop-color="{VIOLET}" /></linearGradient>')
-    add(f'<linearGradient id="hbar" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="{VIOLET}" />'
-        f'<stop offset="100%" stop-color="{VIOLET_LIGHT}" /></linearGradient>')
-    add(f'<linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="{VIOLET_PALE}" />'
-        f'<stop offset="50%" stop-color="{VIOLET}" /><stop offset="100%" stop-color="{VIOLET_LIGHT}" /></linearGradient>')
-    add("</defs>")
     add(f"<style>.t {{ font-family: {FONT}; }}</style>")
-    add(f'<rect width="{W}" height="{H}" rx="16" fill="{BG}" />')
-    add(f'<rect x="22" y="0" width="{W - 44}" height="2" rx="1" fill="url(#accent)" opacity="0.9" />')
+    add(f'<rect width="{W}" height="{H}" rx="20" fill="{BG}" />')
 
     # Nagłówek
     add(f'<text class="t" x="{PAD}" y="46" font-size="20" font-weight="700" fill="{VIOLET_LIGHT}">'
@@ -164,7 +156,7 @@ def render(counts: dict[dt.date, int], header_total: int | None) -> str:
             add(f'<rect x="{x:.1f}" y="{base - 2:.1f}" width="{bar_w:.1f}" height="2" rx="1" fill="{STUB}" />')
         else:
             h = max(3.0, n * scale)
-            fill = VIOLET_PALE if week_start == best_week_start else "url(#bar)"
+            fill = VIOLET_PALE if week_start == best_week_start else VIOLET_LIGHT
             add(f'<rect x="{x:.1f}" y="{base - h:.1f}" width="{bar_w:.1f}" height="{h:.1f}" rx="2" fill="{fill}">'
                 f"{grow('height', 0, h, delay)}{grow('y', base, base - h, delay)}</rect>")
             if week_start == best_week_start:
@@ -189,7 +181,7 @@ def render(counts: dict[dt.date, int], header_total: int | None) -> str:
         if value:
             width = max(6.0, 124 * value / top_day)
             delay = 0.3 + 0.05 * i
-            add(f'<rect x="712" y="{y}" width="{width:.1f}" height="10" rx="5" fill="url(#hbar)">'
+            add(f'<rect x="712" y="{y}" width="{width:.1f}" height="10" rx="5" fill="{VIOLET}">'
                 f"{grow('width', 0, width, delay)}</rect>")
         add(f'<text class="t" x="{W - PAD}" y="{y + 9}" font-size="11" font-weight="600" fill="{WHITE}" '
             f'text-anchor="end">{value}</text>')
@@ -199,12 +191,20 @@ def render(counts: dict[dt.date, int], header_total: int | None) -> str:
 
 
 def main() -> None:
-    counts, header_total = parse(fetch(USER))
-    if len(counts) < 300:
-        raise SystemExit(f"Kalendarz ma tylko {len(counts)} dni, zostawiam poprzedni wykres bez zmian.")
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(render(counts, header_total), encoding="utf-8", newline="\n")
-    print(f"Zapisano {OUT} ({len(counts)} dni, suma z kalendarza {sum(counts.values())}, nagłówek {header_total})")
+    user = sys.argv[1] if len(sys.argv) > 1 else "KsaweryTrebacz"
+    out = Path(sys.argv[2]) if len(sys.argv) > 2 else DEFAULT_OUT
+    try:
+        counts, header_total = parse(fetch(user))
+        if len(counts) < 300:
+            raise ValueError(f"kalendarz ma tylko {len(counts)} dni")
+    except Exception as error:  # noqa: BLE001 - każdy błąd sieci lub formatu traktujemy tak samo
+        if out.exists():
+            print(f"::warning::Nie udało się odczytać kalendarza ({error}). Zostawiam poprzedni wykres.")
+            return
+        raise
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(render(counts, header_total), encoding="utf-8", newline="\n")
+    print(f"Zapisano {out}: {len(counts)} dni, {sum(counts.values())} kontrybucji")
 
 
 if __name__ == "__main__":

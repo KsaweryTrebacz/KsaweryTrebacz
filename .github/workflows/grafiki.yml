@@ -1,0 +1,47 @@
+name: Grafiki profilu
+
+# Generuje grafiki profilu i publikuje je na osobnej gałęzi `output`,
+# żeby automatyczne aktualizacje nie dokładały commitów do `main`.
+
+on:
+  schedule: [{cron: "23 */6 * * *"}]
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: grafiki-profilu
+  cancel-in-progress: false
+
+jobs:
+  generuj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Poprzednie grafiki (zapas na wypadek błędu sieci)
+        run: |
+          mkdir -p out
+          if git fetch -q --depth=1 origin output; then
+            for f in aktywnosc.svg; do
+              git show "FETCH_HEAD:$f" > "out/$f" 2>/dev/null || rm -f "out/$f"
+            done
+          fi
+
+      - name: Wykres aktywności
+        run: python3 .github/scripts/activity_chart.py "${{ github.repository_owner }}" out/aktywnosc.svg
+
+      - name: Publikacja na gałęzi output
+        working-directory: out
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git init -q -b output
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Grafiki profilu"
+          git push -q -f "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" output
