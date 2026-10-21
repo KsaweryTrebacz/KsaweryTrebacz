@@ -1,42 +1,38 @@
 <svg width="900" height="380" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cześć, tu Ksawery! QA Engineer, Automation Tester">
   <defs>
-    <!-- Glow orbs -->
-    <radialGradient id="orb-cyan" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.16" />
-      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0" />
-    </radialGradient>
+    <!-- Glow orbs (violet only) -->
     <radialGradient id="orb-violet" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.30" />
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.28" />
       <stop offset="100%" stop-color="#7C3AED" stop-opacity="0" />
     </radialGradient>
-    <radialGradient id="orb-green" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#10B981" stop-opacity="0.08" />
-      <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
+    <radialGradient id="orb-lilac" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#A78BFA" stop-opacity="0" />
     </radialGradient>
 
-    <!-- Animated accent gradient (cyan -> violet -> green) -->
+    <!-- Animated accent gradient (shades of violet) -->
     <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="0%" stop-color="#C4B5FD" />
       <stop offset="50%" stop-color="#7C3AED" />
-      <stop offset="100%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#A78BFA" />
       <animate attributeName="x1" values="0;-1;0" dur="8s" repeatCount="indefinite" />
       <animate attributeName="x2" values="1;0;1" dur="8s" repeatCount="indefinite" />
     </linearGradient>
 
     <!-- Vertical gradient for equalizer bars (bars are drawn flipped, so y=0 is the bottom) -->
     <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#22D3EE" />
-      <stop offset="100%" stop-color="#7C3AED" />
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#C4B5FD" />
     </linearGradient>
 
     <!-- Progress bar gradient -->
     <linearGradient id="progress" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#22D3EE" />
-      <stop offset="100%" stop-color="#10B981" />
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#C4B5FD" />
     </linearGradient>
 
     <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000" flood-opacity="0.45" />
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000" flood-opacity="0.5" />
     </filter>
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="3" result="blur" />
@@ -67,20 +63,17 @@
   </style>
 
   <!-- ============ Background ============ -->
-  <rect width="900" height="380" fill="#110B1C" />
+  <rect width="900" height="380" fill="#0A0A0F" />
 
-  <circle cx="140" cy="80" r="420" fill="url(#orb-cyan)">
-    <animate attributeName="cx" values="140;230;140" dur="14s" repeatCount="indefinite" />
+  <circle cx="760" cy="320" r="460" fill="url(#orb-violet)">
+    <animate attributeName="cy" values="320;240;320" dur="16s" repeatCount="indefinite" />
   </circle>
-  <circle cx="780" cy="330" r="460" fill="url(#orb-violet)">
-    <animate attributeName="cy" values="330;250;330" dur="16s" repeatCount="indefinite" />
-  </circle>
-  <circle cx="450" cy="190" r="520" fill="url(#orb-green)">
-    <animate attributeName="r" values="520;580;520" dur="18s" repeatCount="indefinite" />
+  <circle cx="160" cy="80" r="420" fill="url(#orb-lilac)">
+    <animate attributeName="cx" values="160;240;160" dur="14s" repeatCount="indefinite" />
   </circle>
 
   <!-- Floating particles -->
-  <g fill="#22D3EE">
+  <g fill="#A78BFA">
     <circle cx="70" cy="340" r="1.6"><animate attributeName="cy" values="340;40" dur="16s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;0.6;0" dur="16s" repeatCount="indefinite" /></circle>
     <circle cx="340" cy="370" r="2"><animate attributeName="cy" values="370;60" dur="21s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;0.5;0" dur="21s" repeatCount="indefinite" /></circle>
     <circle cx="610" cy="360" r="1.2"><animate attributeName="cy" values="360;30" dur="13s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;0.7;0" dur="13s" repeatCount="indefinite" /></circle>
@@ -90,19 +83,19 @@
 
   <!-- ============ LEFT: terminal with a Playwright run ============ -->
   <g transform="translate(28, 28)">
-    <rect width="300" height="324" rx="22" fill="#0F172A" fill-opacity="0.72" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" filter="url(#shadow)" />
+    <rect width="300" height="324" rx="22" fill="#15151D" fill-opacity="0.85" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" filter="url(#shadow)" />
     <rect x="22" y="0" width="256" height="2" rx="1" fill="url(#accent)" opacity="0.9" />
 
     <!-- Window chrome -->
-    <circle cx="26" cy="26" r="5" fill="#EF4444" />
-    <circle cx="44" cy="26" r="5" fill="#F59E0B" />
-    <circle cx="62" cy="26" r="5" fill="#10B981" />
+    <circle cx="26" cy="26" r="5" fill="#3A3A46" />
+    <circle cx="44" cy="26" r="5" fill="#52525E" />
+    <circle cx="62" cy="26" r="5" fill="#7C3AED" />
     <text class="mono" x="150" y="30" font-size="11" fill="#64748B" text-anchor="middle">~/projekt — e2e</text>
 
     <g class="mono" font-size="12.5">
       <!-- 1. command -->
       <text x="24" y="70" fill="#F8FAFC" opacity="0">
-        <tspan fill="#22D3EE">$</tspan> npx playwright test
+        <tspan fill="#A78BFA">$</tspan> npx playwright test
         <animate attributeName="opacity" values="0;1" begin="0.3s" dur="0.3s" fill="freeze" />
       </text>
 
@@ -122,41 +115,41 @@
 
       <!-- 3-6. spec files -->
       <text x="24" y="138" fill="#94A3B8" opacity="0">
-        <tspan fill="#10B981" font-weight="700">✓</tspan> auth/login.spec.ts
+        <tspan fill="#A78BFA" font-weight="700">✓</tspan> auth/login.spec.ts
         <animate attributeName="opacity" values="0;1" begin="1.5s" dur="0.3s" fill="freeze" />
       </text>
       <text x="24" y="162" fill="#94A3B8" opacity="0">
-        <tspan fill="#10B981" font-weight="700">✓</tspan> cart/checkout.spec.ts
+        <tspan fill="#A78BFA" font-weight="700">✓</tspan> cart/checkout.spec.ts
         <animate attributeName="opacity" values="0;1" begin="2.1s" dur="0.3s" fill="freeze" />
       </text>
       <text x="24" y="186" fill="#94A3B8" opacity="0">
-        <tspan fill="#10B981" font-weight="700">✓</tspan> api/orders.spec.ts
+        <tspan fill="#A78BFA" font-weight="700">✓</tspan> api/orders.spec.ts
         <animate attributeName="opacity" values="0;1" begin="2.7s" dur="0.3s" fill="freeze" />
       </text>
       <text x="24" y="210" fill="#94A3B8" opacity="0">
-        <tspan fill="#10B981" font-weight="700">✓</tspan> ui/navigation.spec.ts
+        <tspan fill="#A78BFA" font-weight="700">✓</tspan> ui/navigation.spec.ts
         <animate attributeName="opacity" values="0;1" begin="3.3s" dur="0.3s" fill="freeze" />
       </text>
 
       <!-- 7. summary -->
-      <text x="24" y="242" fill="#10B981" font-weight="700" opacity="0">
+      <text x="24" y="242" fill="#F8FAFC" font-weight="700" opacity="0">
         24 passed <tspan fill="#64748B" font-weight="400">(14.2s)</tspan>
         <animate attributeName="opacity" values="0;1" begin="4.0s" dur="0.4s" fill="freeze" />
       </text>
 
       <!-- 8. idle prompt with blinking cursor -->
-      <text x="24" y="272" fill="#22D3EE" opacity="0">
+      <text x="24" y="272" fill="#A78BFA" opacity="0">
         $
         <animate attributeName="opacity" values="0;1" begin="4.4s" dur="0.3s" fill="freeze" />
       </text>
-      <rect x="38" y="261" width="8" height="14" fill="#22D3EE" opacity="0">
+      <rect x="38" y="261" width="8" height="14" fill="#A78BFA" opacity="0">
         <animate attributeName="opacity" values="0;0;1;0" keyTimes="0;0.5;0.5;1" dur="1s" begin="4.4s" repeatCount="indefinite" calcMode="discrete" />
       </rect>
     </g>
 
     <!-- Scanline -->
     <g clip-path="url(#card-left)">
-      <rect width="300" height="3" fill="#22D3EE" opacity="0.12">
+      <rect width="300" height="3" fill="#A78BFA" opacity="0.10">
         <animate attributeName="y" values="-3;324" dur="5s" repeatCount="indefinite" />
       </rect>
     </g>
@@ -164,7 +157,7 @@
 
   <!-- ============ RIGHT: about me ============ -->
   <g transform="translate(352, 28)">
-    <rect width="520" height="324" rx="22" fill="#0F172A" fill-opacity="0.72" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" filter="url(#shadow)" />
+    <rect width="520" height="324" rx="22" fill="#15151D" fill-opacity="0.85" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" filter="url(#shadow)" />
     <rect x="22" y="0" width="476" height="2" rx="1" fill="url(#accent)" opacity="0.9" />
 
     <!-- Mini equalizer (music nod) in the top-right corner -->
@@ -194,7 +187,7 @@
           <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.333;0.667" dur="12s" repeatCount="indefinite" calcMode="discrete" />
         </text>
       </g>
-      <rect x="2" y="-22" width="3" height="28" rx="1.5" fill="#22D3EE">
+      <rect x="2" y="-22" width="3" height="28" rx="1.5" fill="#A78BFA">
         <animate attributeName="x"
           values="2;148;148;2;216;216;2;152;152;2"
           keyTimes="0;0.1;0.28;0.333;0.433;0.613;0.667;0.767;0.947;1"
@@ -207,7 +200,7 @@
     <g class="sans" font-size="15" font-weight="500" fill="#94A3B8">
       <!-- Lokalizacja -->
       <g transform="translate(36, 155)" opacity="0">
-        <g transform="translate(0,-13) scale(0.7)" fill="none" stroke="#22D3EE" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="translate(0,-13) scale(0.7)" fill="none" stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" />
         </g>
         <text x="28" y="0">Lokalizacja: <tspan fill="#F8FAFC" font-weight="600">Polska</tspan></text>
@@ -215,7 +208,7 @@
       </g>
       <!-- Rola -->
       <g transform="translate(36, 184)" opacity="0">
-        <g transform="translate(0,-13) scale(0.7)" fill="none" stroke="#22D3EE" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="translate(0,-13) scale(0.7)" fill="none" stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <rect width="20" height="14" x="2" y="7" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
         </g>
         <text x="28" y="0">Rola: <tspan fill="#F8FAFC" font-weight="600">Praktykant</tspan></text>
@@ -223,7 +216,7 @@
       </g>
       <!-- Kierunek -->
       <g transform="translate(36, 213)" opacity="0">
-        <g transform="translate(0,-13) scale(0.7)" fill="none" stroke="#22D3EE" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="translate(0,-13) scale(0.7)" fill="none" stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z" /><path d="M22 10v6" /><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
         </g>
         <text x="28" y="0">Kierunek: <tspan fill="#F8FAFC" font-weight="600">Inżynieria i analiza danych</tspan></text>
@@ -231,7 +224,7 @@
       </g>
       <!-- Inżynierka -->
       <g transform="translate(36, 242)" opacity="0">
-        <g transform="translate(0,-13) scale(0.7)" fill="none" stroke="#22D3EE" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="translate(0,-13) scale(0.7)" fill="none" stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" />
         </g>
         <text x="28" y="0">Inżynierka: <tspan fill="#F8FAFC" font-weight="600">Ekstrakcja cech muzycznych</tspan></text>
@@ -239,7 +232,7 @@
       </g>
       <!-- Email -->
       <g transform="translate(36, 271)" opacity="0">
-        <g transform="translate(0,-13) scale(0.7)" fill="none" stroke="#22D3EE" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="translate(0,-13) scale(0.7)" fill="none" stroke="#A78BFA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
         </g>
         <text x="28" y="0">Email: <tspan fill="#F8FAFC" font-weight="600">xavitrem@gazeta.pl</tspan></text>
