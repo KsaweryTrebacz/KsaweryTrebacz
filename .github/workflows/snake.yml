@@ -19,7 +19,7 @@ jobs:
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-            dist/github-contribution-grid-snake-dark.svg?color_snake=%2322D3EE&color_dots=%23030712,%230e7490,%2222D3EE,%237C3AED,%2310B981
+            dist/github-contribution-grid-snake-dark.svg?color_snake=%2322D3EE&color_dots=%23030712,%230e7490,%2322D3EE,%237C3AED,%2310B981
 
       - name: Publikacja do gałęzi output
         uses: crazy-max/ghaction-github-pages@v4
