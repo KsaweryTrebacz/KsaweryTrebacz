@@ -7,7 +7,7 @@
   &nbsp;
   <a href="https://github.com/KsaweryTrebacz?tab=repositories"><img height="40" src="assets/link-repozytoria.svg" alt="Repozytoria" /></a>
   &nbsp;
-  <a href="https://github.com/KsaweryTrebacz/FilmSpringOpen2026"><img height="40" src="assets/link-hackathon.svg" alt="Projekt z hackathonu" /></a>
+  <a href="https://github.com/KsaweryTrebacz/FilmSpringOpen2026"><img height="40" src="assets/link-hackathon.svg" alt="FilmSpringOpen2026" /></a>
 </p>
 
 <br />
